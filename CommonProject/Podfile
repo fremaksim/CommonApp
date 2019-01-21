@@ -1,0 +1,23 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'CommonProject' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for CommonProject
+
+#采用库
+pod 'Alamofire' #网络请求
+pod 'Kingfisher' #图片下载缓存库
+pod 'SnapKit'   #纯代码布局
+pod 'MBProgressHUD' #Toast提示控件
+pod 'MJRefresh' #上下拉刷新控件
+
+#试验库
+pod 'YYKit' #高性能组件库
+
+
+
+
+end
