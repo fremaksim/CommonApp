@@ -36,8 +36,9 @@ class ViewController: UIViewController {
         
 
         var number = ""
+
         number = number.replacingOccurrences(of: " ", with: "")
-        if  String.isTrueIDNumber(text: number) {
+        if  String.isBankCardNo(number) == true {
             print("合格银行卡")
         }else {
             print("未知卡")

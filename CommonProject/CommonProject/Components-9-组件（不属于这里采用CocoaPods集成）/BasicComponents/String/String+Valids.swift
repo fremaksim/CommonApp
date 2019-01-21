@@ -57,8 +57,7 @@ public extension String {
         let areasArray = ["11","12", "13","14", "15","21", "22","23", "31","32", "33","34", "35","36", "37","41", "42","43", "44","45", "46","50", "51","52", "53","54", "61","62", "63","64", "65","71", "81","82", "91"]
         // 检测省份身份行政区代码
         let index = value.index(value.startIndex, offsetBy: 2)
-//        let valueStart2 = value.substring(to: index)
-        let valueStart2 = value[value.startIndex..<index]
+        let valueStart2 = value.substring(to: index)
         //标识省份代码是否正确
         var areaFlag = false
         for areaCode in areasArray {
