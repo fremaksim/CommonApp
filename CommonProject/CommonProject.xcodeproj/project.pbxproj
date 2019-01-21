@@ -54,6 +54,15 @@
 		6A991E9F21F55673009B1A14 /* CommonProject */ = {
 			isa = PBXGroup;
 			children = (
+				6A991EB721F55888009B1A14 /* App-1-应用入口 */,
+				6A991EB821F55894009B1A14 /* Modules-2-功能模块 */,
+				6A991EB921F558BE009B1A14 /* Manager-3-管理模块 */,
+				6A991EBA21F558F4009B1A14 /* Utils-4-工具类 */,
+				6A991EBB21F5590B009B1A14 /* Base-5-基类 */,
+				6A991EBC21F55921009B1A14 /* ThirdParty-6-第三方库 */,
+				6A991EBD21F55937009B1A14 /* Define-7-全局定义 */,
+				6A991EBE21F5594E009B1A14 /* Resource-8-资源文件夹 */,
+				6A991EB621F55870009B1A14 /* Components-9-组件（不属于这里采用CocoaPods集成） */,
 				6A991EA021F55673009B1A14 /* AppDelegate.swift */,
 				6A991EA221F55673009B1A14 /* ViewController.swift */,
 				6A991EA421F55673009B1A14 /* Main.storyboard */,
@@ -62,6 +71,165 @@
 				6A991EAC21F55674009B1A14 /* Info.plist */,
 			);
 			path = CommonProject;
+			sourceTree = "<group>";
+		};
+		6A991EB221F55715009B1A14 /* String */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = String;
+			sourceTree = "<group>";
+		};
+		6A991EB321F55728009B1A14 /* BasicComponents */ = {
+			isa = PBXGroup;
+			children = (
+				6A991EB221F55715009B1A14 /* String */,
+			);
+			path = BasicComponents;
+			sourceTree = "<group>";
+		};
+		6A991EB421F5574A009B1A14 /* BusinessComponents */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = BusinessComponents;
+			sourceTree = "<group>";
+		};
+		6A991EB521F55756009B1A14 /* FunctionComponents */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = FunctionComponents;
+			sourceTree = "<group>";
+		};
+		6A991EB621F55870009B1A14 /* Components-9-组件（不属于这里采用CocoaPods集成） */ = {
+			isa = PBXGroup;
+			children = (
+				6A991EB521F55756009B1A14 /* FunctionComponents */,
+				6A991EB421F5574A009B1A14 /* BusinessComponents */,
+				6A991EB321F55728009B1A14 /* BasicComponents */,
+			);
+			path = "Components-9-组件（不属于这里采用CocoaPods集成）";
+			sourceTree = "<group>";
+		};
+		6A991EB721F55888009B1A14 /* App-1-应用入口 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "App-1-应用入口";
+			sourceTree = "<group>";
+		};
+		6A991EB821F55894009B1A14 /* Modules-2-功能模块 */ = {
+			isa = PBXGroup;
+			children = (
+				6A991EC021F55A29009B1A14 /* Home（首页） */,
+				6A991EC221F55A62009B1A14 /* Message（消息） */,
+				6A991EC121F55A2E009B1A14 /* Profile（我的） */,
+				6A991EBF21F55A14009B1A14 /* Login（登录相关） */,
+			);
+			path = "Modules-2-功能模块";
+			sourceTree = "<group>";
+		};
+		6A991EB921F558BE009B1A14 /* Manager-3-管理模块 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Manager-3-管理模块";
+			sourceTree = "<group>";
+		};
+		6A991EBA21F558F4009B1A14 /* Utils-4-工具类 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Utils-4-工具类";
+			sourceTree = "<group>";
+		};
+		6A991EBB21F5590B009B1A14 /* Base-5-基类 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Base-5-基类";
+			sourceTree = "<group>";
+		};
+		6A991EBC21F55921009B1A14 /* ThirdParty-6-第三方库 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "ThirdParty-6-第三方库";
+			sourceTree = "<group>";
+		};
+		6A991EBD21F55937009B1A14 /* Define-7-全局定义 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Define-7-全局定义";
+			sourceTree = "<group>";
+		};
+		6A991EBE21F5594E009B1A14 /* Resource-8-资源文件夹 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Resource-8-资源文件夹";
+			sourceTree = "<group>";
+		};
+		6A991EBF21F55A14009B1A14 /* Login（登录相关） */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Login（登录相关）";
+			sourceTree = "<group>";
+		};
+		6A991EC021F55A29009B1A14 /* Home（首页） */ = {
+			isa = PBXGroup;
+			children = (
+				6A991EC621F55A9F009B1A14 /* Logic */,
+				6A991EC521F55A96009B1A14 /* Views */,
+				6A991EC421F55A8F009B1A14 /* ViewControllers */,
+				6A991EC321F55A80009B1A14 /* Models */,
+			);
+			path = "Home（首页）";
+			sourceTree = "<group>";
+		};
+		6A991EC121F55A2E009B1A14 /* Profile（我的） */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Profile（我的）";
+			sourceTree = "<group>";
+		};
+		6A991EC221F55A62009B1A14 /* Message（消息） */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Message（消息）";
+			sourceTree = "<group>";
+		};
+		6A991EC321F55A80009B1A14 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6A991EC421F55A8F009B1A14 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		6A991EC521F55A96009B1A14 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6A991EC621F55A9F009B1A14 /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Logic;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
