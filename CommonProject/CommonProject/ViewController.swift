@@ -35,7 +35,7 @@ class ViewController: UIViewController {
         }))
         
 
-        var number = "430821199311078240"
+        var number = ""
         number = number.replacingOccurrences(of: " ", with: "")
         if  String.isTrueIDNumber(text: number) {
             print("合格银行卡")
