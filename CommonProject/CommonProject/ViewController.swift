@@ -9,23 +9,39 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let strings = ["文","戊戌","百日维新aa","远征队113","毒液9090wq",""]
         
-        for str in strings {
-            if String.isAvailableLength(str: str, miniLength: 4, maxlength: 10) == true {
-                print(str,"true", separator: ",", terminator: ".")
-            }else {
-                print(str,"false", separator: ",", terminator: ".")
-            }
-            print(str.count)
-    }
+        let date = Date()
+        print(Date.date2String(date))
+        print(Date.weekday(from: date, language: .chinese))
+        
+        print(Date.week(by: date, results: { (weekOfyear, weekOfMonth, weekday, weekOfOrinal) in
+            print(weekOfyear)
+            print(weekOfMonth)
+            print(weekday)
+            print(weekOfOrinal)
+            
+        }))
+        
+        let specifyDate = "2018-12-28 18:03:45"
+        let newDate = Date.string2Date(specifyDate, dateFormatter: "yyyy-MM-dd HH:mm:ss")!
+        
+        print(Date.timeInteral(newDate, results: { (days, hours, minutes, seconds) in
+            print("相隔\(days)天,\(hours)小时，\(minutes)分钟，\(seconds)秒")
+        }))
         
 
+        var number = "6228 1506 1576 1388"
+        number = number.replacingOccurrences(of: " ", with: "")
+        if  String.isBankCardNo(number) == true {
+            print("合格银行卡")
+        }else {
+            print("未知卡")
+        }
     }
 }
 

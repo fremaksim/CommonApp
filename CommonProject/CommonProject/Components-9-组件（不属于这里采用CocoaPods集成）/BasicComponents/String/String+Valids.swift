@@ -10,10 +10,10 @@ import Foundation
 
 
 // MARK: - 字符串校验
-extension String {
+public extension String {
     
     //MARK: - 验证邮箱
-    static func validateEmail(email: String) -> Bool {
+    public static func validateEmail(email: String) -> Bool {
         if email.count == 0 { return false }
         let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
         let emailTest: NSPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
@@ -21,9 +21,10 @@ extension String {
     }
     
     //MARK: - 验证手机号
-    static func isPhoneNumber(phoneNumber: String) -> Bool {
+    public static func isPhoneNumber(phoneNumber: String) -> Bool {
         if phoneNumber.count == 0 { return false }
-        let mobile = "^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$"
+        //        let mobile = "^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$"
+        let mobile = "1[0-9]{10}"
         let regexMobile = NSPredicate(format: "SELF MATCHES %@",mobile)
         if regexMobile.evaluate(with: phoneNumber) == true {
             return true
@@ -33,7 +34,7 @@ extension String {
     }
     
     //MARK: - 密码正则  6-8位字母和数字组合
-    static func isPasswordRuler(password: String) -> Bool {
+    public static func isPasswordRuler(password: String) -> Bool {
         let passwordRule = "^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,8}$"
         let regexPassword = NSPredicate(format: "SELF MATCHES %@",passwordRule)
         if regexPassword.evaluate(with: password) == true {
@@ -43,7 +44,7 @@ extension String {
         }
     }
     //MARK: - 验证身份证号
-    static func isTrueIDNumber(text: String) -> Bool{
+    public static func isTrueIDNumber(text: String) -> Bool{
         var value = text
         value = value.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         var length : Int = 0
@@ -149,7 +150,6 @@ extension String {
                         return false
                     }
                 }
-                
             }else {
                 return false
             }
@@ -157,6 +157,57 @@ extension String {
             return false
         }
         
+    }
+    
+    //MARK: - 银行卡 16位和19位校验
+    public static func isBankCardNo(_ cardNo: String) -> Bool {
+        guard cardNo.count == 16 || cardNo.count == 19 else {
+            return false
+        }
+        guard isAllNumeric(str: cardNo) == true else {
+            return false
+        }
+        
+        var oddSum  = 0
+        var evenSum = 0
+        var allSum  = 0
+        let cardNoLength = cardNo.count
+        let lastNumber = Int(String(cardNo[(cardNoLength - 1)]))!
+        let cardNo = cardNo[safe: 0...(cardNoLength - 2)]! //去掉最后一位
+        
+        for i in stride(from: cardNoLength - 1, to: 0, by: -1) {
+            let tempString = cardNo[safe: (i - 1 )...(i - 1)]! //倒数取每一位 一共15位或者18位
+            var tmpVal = Int(tempString)!
+            if (cardNoLength % 2 == 1) {
+                if ((i % 2) == 0) {
+                    tmpVal *= 2
+                    if(tmpVal>=10){
+                        tmpVal -= 9
+                    }
+                    evenSum += tmpVal
+                }else{
+                    oddSum += tmpVal
+                }
+            }else {
+                if((i % 2) == 1){
+                    tmpVal *= 2;
+                    if(tmpVal >= 10) {
+                        tmpVal -= 9
+                    }
+                    evenSum += tmpVal
+                }else {
+                    oddSum += tmpVal
+                }
+            }
+        }
+        
+        allSum = oddSum + evenSum
+        allSum += lastNumber
+        if ((allSum % 10) == 0) {
+            return true
+        }else {
+            return false
+        }
     }
     
     
@@ -172,15 +223,15 @@ extension String {
     
     //MARK: - 只包含
     //MARK: - 字符串是否只包含数字
-    static func isAllNumeric(str: String) -> Bool {
+    public static func isAllNumeric(str: String) -> Bool {
         if str.count == 0 { return false }
-        let numericRegex = "[0-9]"
+        let numericRegex = "^[0-9]+$"
         let predicate = NSPredicate(format: "SELF MATCHES %@", numericRegex)
         return predicate.evaluate(with: str)
     }
     
     //MARK: - 字符串是否只包含中文字符
-    static func isAllChinese(str: String) -> Bool {
+    public static func isAllChinese(str: String) -> Bool {
         if str.count == 0  { return false }
         //NSString *match = @"(^[\u4e00-\u9fa5]+$)";
         let chineseRegex = "(^[\\u4e00-\\u9fa5]+$)"
@@ -190,7 +241,7 @@ extension String {
     
     // 判断一个字符串是否在某个范围 比如2~15个汉字，代码如下
     // 一个汉字对应两个字符
-    static func isAvailableLength(str: String, miniLength: Int, maxlength: Int) -> Bool {
+    public static func isAvailableLength(str: String, miniLength: Int, maxlength: Int) -> Bool {
         if str.count == 0 { return false }
         var character = 0
         for i in 0..<str.count {
@@ -205,7 +256,7 @@ extension String {
     }
     
     //MARK: - 字符串是否只有英文字符，26个英文字符
-    static func isAllEnglishCharacters(str: String) -> Bool {
+    public  static func isAllEnglishCharacters(str: String) -> Bool {
         if str.count == 0 { return false}
         let characterRegex = "[A-Za-z]"
         let predicate = NSPredicate(format: "SELF MATCHES %@", characterRegex)
