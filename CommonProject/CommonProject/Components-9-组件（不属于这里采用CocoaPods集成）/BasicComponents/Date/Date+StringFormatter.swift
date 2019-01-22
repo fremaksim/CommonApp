@@ -82,9 +82,6 @@ public enum Weekday: Int {
             return normalNames[self.rawValue]!
         }
     }
-    
-    
-    
 }
 
 

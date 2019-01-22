@@ -259,7 +259,7 @@ public extension String {
     //MARK: - 字符串是否只有英文字符，26个英文字符
     public  static func isAllEnglishCharacters(str: String) -> Bool {
         if str.count == 0 { return false}
-        let characterRegex = "[A-Za-z]"
+        let characterRegex = "^[A-Za-z]+$"
         let predicate = NSPredicate(format: "SELF MATCHES %@", characterRegex)
         return predicate.evaluate(with: str)
     }
