@@ -29,15 +29,32 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        view.addSubview(tableView)
-        tableView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
-        
+ 
+//        deviceInfoView()
         getDeviceInfos()
         
 //        testAES_256_ECB()
         
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        
+        let urlString = "https://www.apple.com"
+//        urlString.urlEncode()
+        
+        if let url = URL(string: urlString) {
+            let wkWebController = BaseWkWebViewController(url: url)
+            navigationController?.pushViewController(wkWebController, animated: true)
+        }
+    }
+    
+    //MARK: - All For Test
+    private func deviceInfoView() {
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
     }
     
     private func testAES_256_ECB() {
