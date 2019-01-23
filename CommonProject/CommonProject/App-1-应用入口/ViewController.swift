@@ -36,6 +36,47 @@ class ViewController: UIViewController {
         
         getDeviceInfos()
         
+//        testAES_256_ECB()
+        
+    }
+    
+    private func testAES_256_ECB() {
+   
+            let key = "abcdefghijklmnopqrstuvwxyzABCDEF" // 32-bytes
+            let keyData = key.data(using: .utf8)!
+        
+//            let ivData = "iv".data(using: .utf8)!
+            var ivData: Data? = nil
+        
+//            let newKey = "abcdefg"
+//            let salt   = "%%EOF"
+//            let newKeyData = try AESCrypter.createKey(password: newKey.data(using: .utf8)!, salt: salt.data(using: .utf8)!)
+           let newKeyData = key.data(using: .utf8)!
+        
+            print(newKeyData)
+            
+            let content = "TechTutorialsX!TechTutorialsX!"
+            let contentData = content.data(using: .utf8)!
+            
+            do {
+                let crypter = try AESCrypter(key: keyData, iv: ivData)
+                
+                do {
+                    let cryptedData = try crypter.encrypt(contentData)
+                    
+                    print("cryptedData: \(cryptedData)")
+                    
+                    let deencryptedData = try crypter.decrypt(cryptedData)
+                
+                    print("dencryptedata:\(String(data: deencryptedData, encoding: .utf8))")
+                } catch  {
+                    print(error)
+                }
+                
+            } catch  {
+                print(error)
+            }
+            
     }
     
     private func getDeviceInfos() {
