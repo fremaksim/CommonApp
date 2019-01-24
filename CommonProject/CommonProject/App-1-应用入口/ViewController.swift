@@ -49,8 +49,8 @@ class ViewController: UIViewController {
     
     //MARK: - All For Test
     private func uiWebViewCallJS(){
-        let urlString = "http://192.168.2.168/web/webkitSample/JSToOC.html"
-        let javaScriptCallUIWebViewVC = BaseUIWebViewController(url: URL(string: urlString)!)
+        let urlString = "http://192.168.2.168/web/webkitSample/webCamera.html"
+        let javaScriptCallUIWebViewVC = ExampleUIWebViewController(url: URL(string: urlString)!)
         navigationController?.pushViewController(javaScriptCallUIWebViewVC, animated: true)
     }
     

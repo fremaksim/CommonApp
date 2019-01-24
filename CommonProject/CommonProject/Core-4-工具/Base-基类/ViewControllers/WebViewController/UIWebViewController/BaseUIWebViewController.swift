@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftWebViewProgress
+import JavaScriptCore
 
 class BaseUIWebViewController: BaseViewController {
     
@@ -61,7 +62,7 @@ class BaseUIWebViewController: BaseViewController {
         let request = URLRequest(url: url)
         webView.loadRequest(request)
         
-
+        
         progressProxy = WebViewProgress()
         webView.delegate = progressProxy
         progressProxy.webViewProxyDelegate = self
@@ -82,7 +83,6 @@ extension BaseUIWebViewController: WebViewProgressDelegate {
             }
         }
     }
-    
 }
 
 extension BaseUIWebViewController: UIWebViewDelegate {

@@ -46,7 +46,7 @@ class NativeCallJSViewController: BaseWkWebViewController {
         }
         
     }
-    
+    //点击Native按钮，调用JS中的函数, result 为JavaScript函数返回值
     @objc private func callJSFunction() {
         self.webView.evaluateJavaScript("testCallJs()") { (result, error) in
             if let error = error {
