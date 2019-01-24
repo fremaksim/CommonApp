@@ -19,7 +19,7 @@ class BaseWkWebViewController: BaseViewController {
         }
     }
     var webViewConfiguration: WKWebViewConfiguration?
-    var jsHandler: JavaScriptHandler?
+    var jsHandler: JavaScriptHandler!
     var url: URL
     private var lastProgress: Double = 0.0
     
@@ -30,7 +30,7 @@ class BaseWkWebViewController: BaseViewController {
     }
     
     //MARK: --- Life Cycle
-    init(url: URL) {
+   public init(url: URL) {
         self.url = url
         super.init(nibName: nil, bundle: nil)
         
@@ -52,7 +52,7 @@ class BaseWkWebViewController: BaseViewController {
         
         jsHandler = JavaScriptHandler(webViewController: self, webViewConfiguration: configuration)
         //TODO: - layout consider navigation bar
-        webView = WKWebView(frame: .zero, configuration: configuration)
+        webView = WKWebView(frame: CGRect(x: 0, y: 64, width: DeviceInfo.screenWidth, height: DeviceInfo.screenHeight - 64), configuration: configuration)
         webView.allowsBackForwardNavigationGestures = true
         webView.backgroundColor = .clear
         webView.navigationDelegate = self
@@ -61,14 +61,14 @@ class BaseWkWebViewController: BaseViewController {
         
         //monitor progress view
         webView.addObserver(self, forKeyPath: Keys.estimatedProgress, options: .new, context: nil)
-        //        view.addSubview(webView!)
-        view = webView
+        view.addSubview(webView)
+//        view = webView
         //        webView?.backgroundColor = UIColor.yellow.withAlphaComponent(0.3)
         
         progressView = UIProgressView(progressViewStyle: .default)
         progressView?.tintColor = progressViewColor
         progressView?.trackTintColor = .clear
-        progressView?.frame = CGRect(x: 0, y: 64, width: UIScreen.main.bounds.width, height: 3)
+        progressView?.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 3)
         webView.addSubview(progressView!)
         
     }
@@ -131,9 +131,7 @@ class BaseWkWebViewController: BaseViewController {
                 self.lastProgress = 0
             }
         }
-        
     }
-    
 }
 extension BaseWkWebViewController: WKUIDelegate {
     

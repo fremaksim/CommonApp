@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F1E36EC83FB79562630717A0CA0690D3"
-               BlueprintName = "YYKit"
+               BlueprintIdentifier = "FA1290BD9C46E61BF154FE7DDA8D128C"
+               BlueprintName = "NJKWebViewProgress"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "YYKit.framework">
+               BuildableName = "NJKWebViewProgress.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

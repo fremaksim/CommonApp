@@ -12,7 +12,9 @@ import WebKit
 class JavaScriptHandler:NSObject, WKScriptMessageHandler {
     
     enum MessageKeys: String,CaseIterable {
-        case backpage = "backpage"
+        case backpage = "backPage"
+        
+        case showImages, showVedio, issueMoment
     }
     
     var webViewController: BaseWkWebViewController
@@ -27,12 +29,24 @@ class JavaScriptHandler:NSObject, WKScriptMessageHandler {
         super.init()
         
         //eg. backpage
-        webViewConfiguration.userContentController.add(self, name: MessageKeys.backpage.rawValue)
+//        webViewConfiguration.userContentController.add(self, name: MessageKeys.backpage.rawValue)
+        MessageKeys.allCases.forEach {
+            webViewConfiguration.userContentController.add(self, name: $0.rawValue)
+        }
+        
+        
     }
     
     
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         if message.name == MessageKeys.backpage.rawValue {
+            if let _ = webViewController.presentingViewController {
+                webViewController.dismiss(animated: true, completion: nil)
+            }else {
+               webViewController.navigationController?.popViewController(animated: true)
+            }
+        }else {
+            print(message.body)
             
         }
     }
