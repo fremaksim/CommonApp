@@ -31,9 +31,10 @@ class ViewController: UIViewController {
         
         
         //        deviceInfoView()
-        getDeviceInfos()
+        //        getDeviceInfos()
         
         //        testAES_256_ECB()
+        aes_256_ecb_objective_c()
         
     }
     
@@ -41,9 +42,9 @@ class ViewController: UIViewController {
         super.touchesBegan(touches, with: event)
         
         //        normalWebView()
-//                nativeCallJs()
-//        JsCallNative()
-        uiWebViewCallJS()
+        nativeCallJs()
+        //        JsCallNative()
+        //        uiWebViewCallJS()
     }
     
     
@@ -63,6 +64,7 @@ class ViewController: UIViewController {
     private func nativeCallJs() {
         let urlString = "http://192.168.2.168/web/webkitSample/JSToOC.html"
         let nativeCallJavaScriptVC = NativeCallJSViewController(url: URL(string: urlString)!)
+//        nativeCallJavaScriptVC.displayLoading(text: "Loading...", animated: true, applicationIgnoreAllEvent: true)
         navigationController?.pushViewController(nativeCallJavaScriptVC, animated: true)
     }
     
@@ -83,13 +85,28 @@ class ViewController: UIViewController {
         }
     }
     
+    private func aes_256_ecb_objective_c() {
+        let key = "abcdefghijklmnopqrstuvwxyzABCDEF" //32-bytes
+        let keyData = key.data(using: .utf8)!
+        print("keyData bytes: \(keyData.count)")
+        let content = "TechTutorialsX!TechTutorialsX!" //30-bytes
+        let contentData = content.data(using: .utf8)!
+        print(contentData)
+        let  encryptedData = AESCipher.do(contentData, key: keyData, context: CCOperation(kCCEncrypt)) //32-bytes
+        
+        let decryptedData = AESCipher.do(encryptedData, key: keyData, context: CCOperation(kCCDecrypt))
+        print(encryptedData)
+        print(String(data: decryptedData, encoding: .utf8)!)
+        
+    }
+    
     private func testAES_256_ECB() {
         
         let key = "abcdefghijklmnopqrstuvwxyzABCDEF" // 32-bytes
         let keyData = key.data(using: .utf8)!
         
         //            let ivData = "iv".data(using: .utf8)!
-        var ivData: Data? = nil
+        //        var ivData: Data? = nil
         
         //            let newKey = "abcdefg"
         //            let salt   = "%%EOF"
@@ -102,7 +119,7 @@ class ViewController: UIViewController {
         let contentData = content.data(using: .utf8)!
         
         do {
-            let crypter = try AESCrypter(key: keyData, iv: ivData)
+            let crypter = try AESCrypter(key: keyData, iv: nil)
             
             do {
                 let cryptedData = try crypter.encrypt(contentData)

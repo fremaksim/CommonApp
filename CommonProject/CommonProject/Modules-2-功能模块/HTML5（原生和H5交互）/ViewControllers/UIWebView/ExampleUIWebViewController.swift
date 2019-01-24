@@ -89,7 +89,6 @@ extension ExampleUIWebViewController: UIImagePickerControllerDelegate, UINavigat
             var imageString = imageData.base64EncodedString(options: .lineLength64Characters)
             imageString.removeWhitespaceAndNewLines()
             
-            
             //不能少了两个‘’单引号。
             var script = "rtnCamera('\(imageString)')"
             //            print(script)

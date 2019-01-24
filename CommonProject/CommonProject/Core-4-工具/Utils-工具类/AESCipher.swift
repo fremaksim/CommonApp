@@ -81,7 +81,7 @@ class AESCrypter {
                         //TODO: - kCCOptionECBMode and kCCOptionPKCS7Padding
                         status = CCCrypt(operation,
                                          CCAlgorithm(kCCAlgorithmAES),
-                                         CCOptions(kCCOptionECBMode),
+                                         CCOptions(kCCOptionECBMode | kCCOptionPKCS7Padding),
                                          keyBytes, key.count,
                                          ivBytes,
                                          encryptingBytes,
@@ -98,7 +98,7 @@ class AESCrypter {
                 key.withUnsafeBytes{ (keyBytes: UnsafePointer<UInt8>!) -> () in
                     status = CCCrypt(operation,
                                      CCAlgorithm(kCCBlockSizeAES128),
-                                     CCOptions(kCCOptionECBMode),
+                                     CCOptions(kCCOptionECBMode | kCCOptionPKCS7Padding),
                                      keyBytes,
                                      key.count,
                                      nil,

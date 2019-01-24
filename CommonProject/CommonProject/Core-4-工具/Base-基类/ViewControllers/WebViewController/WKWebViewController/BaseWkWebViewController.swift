@@ -147,6 +147,8 @@ extension BaseWkWebViewController: WKNavigationDelegate {
         title = webView.title
         print(#function)
         //        updateProgressView(webView.estimatedProgress)
+        
+//        self.hideLoading()
     }
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {

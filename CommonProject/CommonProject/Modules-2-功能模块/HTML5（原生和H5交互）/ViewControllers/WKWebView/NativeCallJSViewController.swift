@@ -55,6 +55,14 @@ class NativeCallJSViewController: BaseWkWebViewController {
                 print(result)
             }
         }
+        let value = "一个骄傲的参数"
+        self.webView.evaluateJavaScript("callJsOneArgument('\(value)')") { (result, error) in
+            if let error = error {
+                print(error)
+            }else {
+                print(result)
+            }
+        }
     }
     
 }

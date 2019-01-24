@@ -16,6 +16,7 @@ pod 'Kingfisher' #图片下载缓存库
 pod 'SnapKit'   #纯代码布局
 pod 'MBProgressHUD' #Toast提示控件
 pod 'MJRefresh' #上下拉刷新控件
+pod 'R.swift'   #资源访问
 
 #试验库
 pod 'YYKit' #高性能组件库
