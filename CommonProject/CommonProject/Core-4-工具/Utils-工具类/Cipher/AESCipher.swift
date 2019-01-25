@@ -85,7 +85,10 @@ class AESCrypter {
                                          keyBytes, key.count,
                                          ivBytes,
                                          encryptingBytes,
-                                         input.count, &outBytes, outBytes.count, &outLength)
+                                         input.count,
+                                         &outBytes,
+                                         outBytes.count,
+                                         &outLength)
                     }
                 }
                 guard status == kCCSuccess else {
@@ -95,12 +98,16 @@ class AESCrypter {
                 
             }else {
                 var status: CCCryptorStatus = CCCryptorStatus(kCCSuccess)
-                key.withUnsafeBytes{ (keyBytes: UnsafePointer<UInt8>!) -> () in
+                key.withUnsafeBytes{ (keyBytes: UnsafePointer<UInt8>?) -> () in
+                    guard (keyBytes != nil) else {
+                        print("error")
+                        return
+                    }
                     status = CCCrypt(operation,
                                      CCAlgorithm(kCCBlockSizeAES128),
                                      CCOptions(kCCOptionECBMode | kCCOptionPKCS7Padding),
                                      keyBytes,
-                                     key.count,
+                                     kCCKeySizeAES256,
                                      nil,
                                      encryptingBytes,
                                      input.count,

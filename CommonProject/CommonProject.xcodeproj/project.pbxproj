@@ -19,6 +19,8 @@
 		6A687B3221F96DBD00551EF2 /* UIImage+Compress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A687B3121F96DBD00551EF2 /* UIImage+Compress.swift */; };
 		6A687B3421F96DD400551EF2 /* UIImage+Crop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A687B3321F96DD400551EF2 /* UIImage+Crop.swift */; };
 		6A687B3621F9860E00551EF2 /* String+Trim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A687B3521F9860E00551EF2 /* String+Trim.swift */; };
+		6A93308021FAA1A3009CB0D2 /* CryptLib.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A93307C21FAA1A3009CB0D2 /* CryptLib.m */; };
+		6A93308121FAA1A3009CB0D2 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A93307F21FAA1A3009CB0D2 /* NSData+Base64.m */; };
 		6A991EA121F55673009B1A14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A991EA021F55673009B1A14 /* AppDelegate.swift */; };
 		6A991EA321F55673009B1A14 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A991EA221F55673009B1A14 /* ViewController.swift */; };
 		6A991EA621F55673009B1A14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A991EA421F55673009B1A14 /* Main.storyboard */; };
@@ -58,6 +60,10 @@
 		6A687B3121F96DBD00551EF2 /* UIImage+Compress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Compress.swift"; sourceTree = "<group>"; };
 		6A687B3321F96DD400551EF2 /* UIImage+Crop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Crop.swift"; sourceTree = "<group>"; };
 		6A687B3521F9860E00551EF2 /* String+Trim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Trim.swift"; sourceTree = "<group>"; };
+		6A93307C21FAA1A3009CB0D2 /* CryptLib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CryptLib.m; sourceTree = "<group>"; };
+		6A93307D21FAA1A3009CB0D2 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		6A93307E21FAA1A3009CB0D2 /* CryptLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CryptLib.h; sourceTree = "<group>"; };
+		6A93307F21FAA1A3009CB0D2 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		6A991E9D21F55673009B1A14 /* CommonProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CommonProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A991EA021F55673009B1A14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6A991EA221F55673009B1A14 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +127,28 @@
 				6A687B2D21F953B100551EF2 /* JSBridge.swift */,
 			);
 			path = UIWebView;
+			sourceTree = "<group>";
+		};
+		6A93307A21FAA17A009CB0D2 /* Cipher */ = {
+			isa = PBXGroup;
+			children = (
+				6A93307B21FAA1A3009CB0D2 /* iOS */,
+				6A991EE021F745AC009B1A14 /* AESCipher.swift */,
+				6A0AA2FA21F9C1FB0039567E /* AESCipher.h */,
+				6A0AA2FB21F9C1FB0039567E /* AESCipher.m */,
+			);
+			path = Cipher;
+			sourceTree = "<group>";
+		};
+		6A93307B21FAA1A3009CB0D2 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				6A93307E21FAA1A3009CB0D2 /* CryptLib.h */,
+				6A93307C21FAA1A3009CB0D2 /* CryptLib.m */,
+				6A93307D21FAA1A3009CB0D2 /* NSData+Base64.h */,
+				6A93307F21FAA1A3009CB0D2 /* NSData+Base64.m */,
+			);
+			path = iOS;
 			sourceTree = "<group>";
 		};
 		6A991E9421F55673009B1A14 = {
@@ -234,12 +262,10 @@
 		6A991EBA21F558F4009B1A14 /* Utils-工具类 */ = {
 			isa = PBXGroup;
 			children = (
+				6A93307A21FAA17A009CB0D2 /* Cipher */,
 				6A0AA2F021F98F720039567E /* Alert */,
 				6A991EDE21F740CA009B1A14 /* NetwrokManager.swift */,
 				6A991ED221F6F886009B1A14 /* DeviceInfo.swift */,
-				6A991EE021F745AC009B1A14 /* AESCipher.swift */,
-				6A0AA2FA21F9C1FB0039567E /* AESCipher.h */,
-				6A0AA2FB21F9C1FB0039567E /* AESCipher.m */,
 			);
 			path = "Utils-工具类";
 			sourceTree = "<group>";
@@ -669,9 +695,11 @@
 				6A991EA321F55673009B1A14 /* ViewController.swift in Sources */,
 				6A0AA2F421F990CF0039567E /* UIViewController+Alert.swift in Sources */,
 				6A687B2C21F9510F00551EF2 /* ExampleUIWebViewController.swift in Sources */,
+				6A93308121FAA1A3009CB0D2 /* NSData+Base64.m in Sources */,
 				6A991EDF21F740CA009B1A14 /* NetwrokManager.swift in Sources */,
 				6A0AA2F621F991C70039567E /* UIActivityViewController+Make.swift in Sources */,
 				6A991EA121F55673009B1A14 /* AppDelegate.swift in Sources */,
+				6A93308021FAA1A3009CB0D2 /* CryptLib.m in Sources */,
 				6A0AA2FC21F9C1FB0039567E /* AESCipher.m in Sources */,
 				6A991EDA21F7372B009B1A14 /* AppDelegate+AppService.swift in Sources */,
 				6A991EDD21F7380F009B1A14 /* Notification+Extension.swift in Sources */,

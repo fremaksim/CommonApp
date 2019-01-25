@@ -33,8 +33,10 @@ class ViewController: UIViewController {
         //        deviceInfoView()
         //        getDeviceInfos()
         
-        //        testAES_256_ECB()
+        //                testAES_256_ECB()
         aes_256_ecb_objective_c()
+        
+        
         
     }
     
@@ -64,7 +66,7 @@ class ViewController: UIViewController {
     private func nativeCallJs() {
         let urlString = "http://192.168.2.168/web/webkitSample/JSToOC.html"
         let nativeCallJavaScriptVC = NativeCallJSViewController(url: URL(string: urlString)!)
-//        nativeCallJavaScriptVC.displayLoading(text: "Loading...", animated: true, applicationIgnoreAllEvent: true)
+        //        nativeCallJavaScriptVC.displayLoading(text: "Loading...", animated: true, applicationIgnoreAllEvent: true)
         navigationController?.pushViewController(nativeCallJavaScriptVC, animated: true)
     }
     
@@ -86,17 +88,53 @@ class ViewController: UIViewController {
     }
     
     private func aes_256_ecb_objective_c() {
-        let key = "abcdefghijklmnopqrstuvwxyzABCDEF" //32-bytes
+        //        let key = "abcdefghijklmnopqrstuvwxyzABCDEF" //32-bytes
+        let key = "abcde" //5-bytes
         let keyData = key.data(using: .utf8)!
         print("keyData bytes: \(keyData.count)")
         let content = "TechTutorialsX!TechTutorialsX!" //30-bytes
-        let contentData = content.data(using: .utf8)!
-        print(contentData)
-        let  encryptedData = AESCipher.do(contentData, key: keyData, context: CCOperation(kCCEncrypt)) //32-bytes
+        var contentData = content.data(using: .utf8)!
         
-        let decryptedData = AESCipher.do(encryptedData, key: keyData, context: CCOperation(kCCDecrypt))
-        print(encryptedData)
-        print(String(data: decryptedData, encoding: .utf8)!)
+        let keySize = 32 //AES256 key size
+        let modulo = contentData.count % keySize
+        
+        //不能整除 padding
+//        if modulo != 0 {
+//            let appandingBytes = keySize - modulo
+//            //            let appandingZero = Array<Int>(repeating: 0, count: appandingBytes)
+//            let appanddingZeroData = Data.init(repeating: 0, count: appandingBytes)
+//            print("appanddingData bytes: \(appanddingZeroData.count)")
+//            contentData.append(appanddingZeroData)
+//        }
+        
+        print(contentData)
+        //        let encryptedData = AESCipher.do(contentData, key: keyData, context: CCOperation(kCCEncrypt)) //32-bytes
+        //
+        //        let decryptedData = AESCipher.do(encryptedData, key: keyData, context: CCOperation(kCCDecrypt))
+//        let encryptedData =
+        let settings = AESCipherSetting(type: AESCipherType192, padding: AESCipherPaddingZero, keyPadding: AESCipherKeyPaddingZero, operation: AESCipherOperationEncrypt)
+        
+        AESCipher.ecbCipher(contentData, key: keyData, settings: settings) { (data, error) in
+            if error != AESCipherErrorNone {
+                
+            }else {
+                print("encryptedData: \(data?.base64EncodedString())")
+                //重职位解密
+                settings.operation = AESCipherOperationDecrypt;
+                AESCipher.ecbCipher(data!, key: keyData, settings: settings, completion: { (data, error) in
+                    if error != AESCipherErrorNone {
+                        
+                    }else{
+                        print( "decryptedData \(String(data: data!, encoding: .utf8)!)")
+                    }
+                })
+            }
+            
+        } //32-bytes
+        
+//        let decryptedData =
+//        print(encryptedData.base64EncodedString())
+//        print(String(data: decryptedData, encoding: .utf8)!)
         
     }
     
