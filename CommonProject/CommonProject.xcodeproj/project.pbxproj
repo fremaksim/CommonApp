@@ -13,12 +13,18 @@
 		6A0AA2F621F991C70039567E /* UIActivityViewController+Make.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0AA2F521F991C70039567E /* UIActivityViewController+Make.swift */; };
 		6A0AA2F921F9949A0039567E /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0AA2F821F9949A0039567E /* R.generated.swift */; };
 		6A0AA2FC21F9C1FB0039567E /* AESCipher.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A0AA2FB21F9C1FB0039567E /* AESCipher.m */; };
+		6A14F02C21FC038300B8D99C /* CommonPayment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A14F02B21FC038300B8D99C /* CommonPayment.swift */; };
 		6A687B2C21F9510F00551EF2 /* ExampleUIWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A687B2B21F9510F00551EF2 /* ExampleUIWebViewController.swift */; };
 		6A687B2E21F953B100551EF2 /* JSBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A687B2D21F953B100551EF2 /* JSBridge.swift */; };
 		6A687B3021F9682700551EF2 /* UIView+CurrentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A687B2F21F9682700551EF2 /* UIView+CurrentController.swift */; };
 		6A687B3221F96DBD00551EF2 /* UIImage+Compress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A687B3121F96DBD00551EF2 /* UIImage+Compress.swift */; };
 		6A687B3421F96DD400551EF2 /* UIImage+Crop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A687B3321F96DD400551EF2 /* UIImage+Crop.swift */; };
 		6A687B3621F9860E00551EF2 /* String+Trim.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A687B3521F9860E00551EF2 /* String+Trim.swift */; };
+		6A6B546C21FEAD970007F0C4 /* TableViewCell+Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6B546B21FEAD970007F0C4 /* TableViewCell+Identifier.swift */; };
+		6A6B546E21FECDD90007F0C4 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6B546D21FECDD90007F0C4 /* UIImage+Extension.swift */; };
+		6A6B547B21FEDDB10007F0C4 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6B547A21FEDDB10007F0C4 /* Order.swift */; };
+		6A6B547F21FEE7AB0007F0C4 /* PAirSandbox.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A6B547D21FEE7AB0007F0C4 /* PAirSandbox.m */; };
+		6A6B548221FEEB350007F0C4 /* PAirSandBoxSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6B548121FEEB350007F0C4 /* PAirSandBoxSwift.swift */; };
 		6A93308021FAA1A3009CB0D2 /* CryptLib.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A93307C21FAA1A3009CB0D2 /* CryptLib.m */; };
 		6A93308121FAA1A3009CB0D2 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A93307F21FAA1A3009CB0D2 /* NSData+Base64.m */; };
 		6A991EA121F55673009B1A14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A991EA021F55673009B1A14 /* AppDelegate.swift */; };
@@ -54,12 +60,19 @@
 		6A0AA2F821F9949A0039567E /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		6A0AA2FA21F9C1FB0039567E /* AESCipher.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AESCipher.h; sourceTree = "<group>"; };
 		6A0AA2FB21F9C1FB0039567E /* AESCipher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AESCipher.m; sourceTree = "<group>"; };
+		6A14F02B21FC038300B8D99C /* CommonPayment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonPayment.swift; sourceTree = "<group>"; };
 		6A687B2B21F9510F00551EF2 /* ExampleUIWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleUIWebViewController.swift; sourceTree = "<group>"; };
 		6A687B2D21F953B100551EF2 /* JSBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSBridge.swift; sourceTree = "<group>"; };
 		6A687B2F21F9682700551EF2 /* UIView+CurrentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+CurrentController.swift"; sourceTree = "<group>"; };
 		6A687B3121F96DBD00551EF2 /* UIImage+Compress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Compress.swift"; sourceTree = "<group>"; };
 		6A687B3321F96DD400551EF2 /* UIImage+Crop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Crop.swift"; sourceTree = "<group>"; };
 		6A687B3521F9860E00551EF2 /* String+Trim.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Trim.swift"; sourceTree = "<group>"; };
+		6A6B546B21FEAD970007F0C4 /* TableViewCell+Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TableViewCell+Identifier.swift"; sourceTree = "<group>"; };
+		6A6B546D21FECDD90007F0C4 /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		6A6B547A21FEDDB10007F0C4 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		6A6B547D21FEE7AB0007F0C4 /* PAirSandbox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAirSandbox.m; sourceTree = "<group>"; };
+		6A6B547E21FEE7AB0007F0C4 /* PAirSandbox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAirSandbox.h; sourceTree = "<group>"; };
+		6A6B548121FEEB350007F0C4 /* PAirSandBoxSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PAirSandBoxSwift.swift; sourceTree = "<group>"; };
 		6A93307C21FAA1A3009CB0D2 /* CryptLib.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CryptLib.m; sourceTree = "<group>"; };
 		6A93307D21FAA1A3009CB0D2 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
 		6A93307E21FAA1A3009CB0D2 /* CryptLib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CryptLib.h; sourceTree = "<group>"; };
@@ -111,6 +124,14 @@
 			path = Alert;
 			sourceTree = "<group>";
 		};
+		6A14F02A21FC032600B8D99C /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				6A14F02B21FC038300B8D99C /* CommonPayment.swift */,
+			);
+			path = Payment;
+			sourceTree = "<group>";
+		};
 		6A687B2921F950AF00551EF2 /* WKWebView */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +148,39 @@
 				6A687B2D21F953B100551EF2 /* JSBridge.swift */,
 			);
 			path = UIWebView;
+			sourceTree = "<group>";
+		};
+		6A6B547821FEDD810007F0C4 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				6A6B547921FEDD880007F0C4 /* Sqlite */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		6A6B547921FEDD880007F0C4 /* Sqlite */ = {
+			isa = PBXGroup;
+			children = (
+				6A6B547A21FEDDB10007F0C4 /* Order.swift */,
+			);
+			path = Sqlite;
+			sourceTree = "<group>";
+		};
+		6A6B547C21FEE7AB0007F0C4 /* AirSandbox */ = {
+			isa = PBXGroup;
+			children = (
+				6A6B547E21FEE7AB0007F0C4 /* PAirSandbox.h */,
+				6A6B547D21FEE7AB0007F0C4 /* PAirSandbox.m */,
+			);
+			path = AirSandbox;
+			sourceTree = "<group>";
+		};
+		6A6B548021FEEAB00007F0C4 /* AirSandBoxSwift */ = {
+			isa = PBXGroup;
+			children = (
+				6A6B548121FEEB350007F0C4 /* PAirSandBoxSwift.swift */,
+			);
+			path = AirSandBoxSwift;
 			sourceTree = "<group>";
 		};
 		6A93307A21FAA17A009CB0D2 /* Cipher */ = {
@@ -262,6 +316,7 @@
 		6A991EBA21F558F4009B1A14 /* Utils-工具类 */ = {
 			isa = PBXGroup;
 			children = (
+				6A14F02A21FC032600B8D99C /* Payment */,
 				6A93307A21FAA17A009CB0D2 /* Cipher */,
 				6A0AA2F021F98F720039567E /* Alert */,
 				6A991EDE21F740CA009B1A14 /* NetwrokManager.swift */,
@@ -283,6 +338,8 @@
 		6A991EBC21F55921009B1A14 /* ThirdParty-5-第三方库 */ = {
 			isa = PBXGroup;
 			children = (
+				6A6B548021FEEAB00007F0C4 /* AirSandBoxSwift */,
+				6A6B547C21FEE7AB0007F0C4 /* AirSandbox */,
 				6A991EFF21F89BB7009B1A14 /* CommonProject-Bridging-Header.h */,
 			);
 			path = "ThirdParty-5-第三方库";
@@ -366,6 +423,7 @@
 		6A991ED421F7347D009B1A14 /* Core-4-工具 */ = {
 			isa = PBXGroup;
 			children = (
+				6A6B547821FEDD810007F0C4 /* Storage */,
 				6A991EDB21F737D1009B1A14 /* Extensions-扩展 */,
 				6A991EBB21F5590B009B1A14 /* Base-基类 */,
 				6A991EBA21F558F4009B1A14 /* Utils-工具类 */,
@@ -418,6 +476,8 @@
 				6A0AA2F121F9902D0039567E /* UIViewController+TopMostViewController.swift */,
 				6A0AA2F321F990CF0039567E /* UIViewController+Alert.swift */,
 				6A0AA2F521F991C70039567E /* UIActivityViewController+Make.swift */,
+				6A6B546B21FEAD970007F0C4 /* TableViewCell+Identifier.swift */,
+				6A6B546D21FECDD90007F0C4 /* UIImage+Extension.swift */,
 			);
 			path = "Extensions-扩展";
 			sourceTree = "<group>";
@@ -643,8 +703,11 @@
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/NJKWebViewProgress/NJKWebViewProgress.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
+				"${BUILT_PRODUCTS_DIR}/SQLiteRepairKit/sqliterk.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftWebViewProgress/SwiftWebViewProgress.framework",
+				"${BUILT_PRODUCTS_DIR}/WCDB.swift/WCDBSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/WCDBOptimizedSQLCipher/sqlcipher.framework",
 				"${BUILT_PRODUCTS_DIR}/YYKit/YYKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -658,8 +721,11 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NJKWebViewProgress.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/sqliterk.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftWebViewProgress.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WCDBSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/sqlcipher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -693,8 +759,11 @@
 				6A687B2E21F953B100551EF2 /* JSBridge.swift in Sources */,
 				6A991ECB21F57610009B1A14 /* String+Valids.swift in Sources */,
 				6A991EA321F55673009B1A14 /* ViewController.swift in Sources */,
+				6A14F02C21FC038300B8D99C /* CommonPayment.swift in Sources */,
+				6A6B547F21FEE7AB0007F0C4 /* PAirSandbox.m in Sources */,
 				6A0AA2F421F990CF0039567E /* UIViewController+Alert.swift in Sources */,
 				6A687B2C21F9510F00551EF2 /* ExampleUIWebViewController.swift in Sources */,
+				6A6B546E21FECDD90007F0C4 /* UIImage+Extension.swift in Sources */,
 				6A93308121FAA1A3009CB0D2 /* NSData+Base64.m in Sources */,
 				6A991EDF21F740CA009B1A14 /* NetwrokManager.swift in Sources */,
 				6A0AA2F621F991C70039567E /* UIActivityViewController+Make.swift in Sources */,
@@ -702,8 +771,11 @@
 				6A93308021FAA1A3009CB0D2 /* CryptLib.m in Sources */,
 				6A0AA2FC21F9C1FB0039567E /* AESCipher.m in Sources */,
 				6A991EDA21F7372B009B1A14 /* AppDelegate+AppService.swift in Sources */,
+				6A6B548221FEEB350007F0C4 /* PAirSandBoxSwift.swift in Sources */,
+				6A6B547B21FEDDB10007F0C4 /* Order.swift in Sources */,
 				6A991EDD21F7380F009B1A14 /* Notification+Extension.swift in Sources */,
 				6A991EF221F80DE6009B1A14 /* BaseWkWebViewController.swift in Sources */,
+				6A6B546C21FEAD970007F0C4 /* TableViewCell+Identifier.swift in Sources */,
 				6A991EF421F81430009B1A14 /* JavaScriptHandler.swift in Sources */,
 				6A991ECA21F56112009B1A14 /* String+Slice.swift in Sources */,
 			);

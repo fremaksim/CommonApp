@@ -126,28 +126,28 @@ class AESCrypter {
     }
     
 
-//    static func createKey(password: Data, salt: Data) throws -> Data {
-//        let length = kCCKeySizeAES256
-//        var status = Int32(0)
-//        var derivedBytes = [UInt8](repeating: 0, count: length)
-//        password.withUnsafeBytes { (passwordBytes: UnsafePointer<Int8>!) in
-//            salt.withUnsafeBytes { (saltBytes: UnsafePointer<UInt8>!) in
-//                status = CCKeyDerivationPBKDF(CCPBKDFAlgorithm(kCCPBKDF2),                  // algorithm
-//                    passwordBytes,                                // password
-//                    password.count,                               // passwordLen
-//                    saltBytes,                                    // salt
-//                    salt.count,                                   // saltLen
-//                    CCPseudoRandomAlgorithm(kCCPRFHmacAlgSHA1),   // prf
-//                    10000,                                        // rounds
-//                    &derivedBytes,                                // derivedKey
-//                    length)                                       // derivedKeyLen
-//            }
-//        }
-//        guard status == 0 else {
-//            throw Error.keyGeneration(status: Int(status))
-//        }
-//        return Data(bytes: UnsafePointer<UInt8>(derivedBytes), count: length)
-//    }
+    static func createKey(password: Data, salt: Data) throws -> Data {
+        let length = kCCKeySizeAES256
+        var status = Int32(0)
+        var derivedBytes = [UInt8](repeating: 0, count: length)
+        password.withUnsafeBytes { (passwordBytes: UnsafePointer<Int8>!) in
+            salt.withUnsafeBytes { (saltBytes: UnsafePointer<UInt8>!) in
+                status = CCKeyDerivationPBKDF(CCPBKDFAlgorithm(kCCPBKDF2),                  // algorithm
+                    passwordBytes,                                // password
+                    password.count,                               // passwordLen
+                    saltBytes,                                    // salt
+                    salt.count,                                   // saltLen
+                    CCPseudoRandomAlgorithm(kCCPRFHmacAlgSHA1),   // prf
+                    10000,                                        // rounds
+                    &derivedBytes,                                // derivedKey
+                    length)                                       // derivedKeyLen
+            }
+        }
+        guard status == 0 else {
+            throw Error.keyGeneration(status: Int(status))
+        }
+        return Data(bytes: UnsafePointer<UInt8>(derivedBytes), count: length)
+    }
     
 }
 

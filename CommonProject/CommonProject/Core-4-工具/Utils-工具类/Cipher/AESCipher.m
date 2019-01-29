@@ -7,7 +7,7 @@
 //
 
 #import "AESCipher.h"
-#import <CommonCrypto/CommonCryptor.h>
+//#import <CommonCrypto/CommonCryptor.h>
 
 @interface AESCipherSetting()
 

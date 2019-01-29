@@ -17,11 +17,13 @@ pod 'SnapKit'   #纯代码布局
 pod 'MBProgressHUD' #Toast提示控件
 pod 'MJRefresh' #上下拉刷新控件
 pod 'R.swift'   #资源访问
+#pod 'AirSandbox'
 
 #试验库
 pod 'YYKit' #高性能组件库
 pod 'DeviceKit', '~> 1.3'
 pod 'NJKWebViewProgress' #UIWebView Progress
 pod "SwiftWebViewProgress"
+pod 'WCDB.swift' #wechat database
 
 end

@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#include <CommonCrypto/CommonCryptor.h>
-#import <Security/Security.h>
+#import <CommonCrypto/CommonDigest.h>
+#import <CommonCrypto/CommonCryptor.h>
+
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -63,12 +64,20 @@ typedef void(^AESCipherCompletion)(NSData *_Nullable dataOut ,AESCipherError err
                   keyPadding:(AESCipherKeyPadding)keyPadding
                    operation:(AESCipherOperation)encryptOrDencrypt;
 
+- (void)createKey:(NSString *)key
+            round:(NSUInteger)round
+        algorithm:(u_int32_t)algorithm;
+
+
 @end
 
 /**
  The AESCipher design for ECB, only support zeroPadding and PKCS7Padding ()
  */
 @interface AESCipher: NSObject
+
+// todo -
+// 1.0 key 求导成相应的size
 
 // features
 // 1. DataIn bytes padding.

@@ -31,6 +31,14 @@ class BaseViewController: UIViewController, NoDataProtocol {
         setupViews()
     }
     
+    override var shouldAutorotate: Bool {
+        return false
+    }
+    
+    //    shouldAutorotateToInterfaceOrientation
+    
+    
+    
     func setupViews() {
         //默认白色背景
         view.backgroundColor = .white
