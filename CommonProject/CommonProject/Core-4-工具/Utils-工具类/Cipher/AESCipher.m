@@ -10,11 +10,11 @@
 //#import <CommonCrypto/CommonCryptor.h>
 
 @interface AESCipherSetting()
-
+    
 @end
 
 @implementation AESCipherSetting
-
+    
 - (instancetype)initWithType:(AESCipherType)type
                      padding:(AESCipherPadding)dataPadding
                   keyPadding:(AESCipherKeyPadding)keyPadding
@@ -27,18 +27,18 @@
     }
     return self;
 }
-
+    
 @end
 
 
 /*************  AESCipher    **********/
 
 @interface AESCipher()
-
+    
 @end
 
 @implementation AESCipher
-
+    
 + (void)ecbCipher:(NSData *)dataIn
               key:(NSData *)symmetricKey
          settings:(AESCipherSetting *)setting
@@ -57,16 +57,16 @@
     //检查Key
     switch (type) {
         case AESCipherType128:
-            keySize = AESCipherKeySize128;
-            break;
+        keySize = AESCipherKeySize128;
+        break;
         case AESCipherType192:
-            keySize = AESCipherKeySize192;
-            break;
+        keySize = AESCipherKeySize192;
+        break;
         case AESCipherType256:
-            keySize = AESCipherKeySize256;
-            break;
+        keySize = AESCipherKeySize256;
+        break;
         default:
-            break;
+        break;
     }
     NSData *newKey = [self appendKeyDataWithKeySize:keySize key:symmetricKey keyPadding:keyPadding completion:^(NSData * _Nullable dataOut, AESCipherError error) {
         if (error != AESCipherErrorNone) {
@@ -80,14 +80,13 @@
     
     switch (setting.operation) {
         case AESCipherOperationEncrypt:
-            op = (CCOperation)(kCCEncrypt);
-            break;
+        op = (CCOperation)(kCCEncrypt);
+        break;
         case AESCipherOperationDecrypt:
-            op = (CCOperation)(kCCDecrypt);
-            
-            break;
+        op = (CCOperation)(kCCDecrypt);
+        break;
         default:
-            break;
+        break;
     }
     // 加密添加，解密移除， current not removed the data appendded, it's work
     newData = [self dealWithDataIn:dataIn padding:setting.dataPadding operation:op];
@@ -101,7 +100,7 @@
              }];
     
 }
-
+    
 + (void)ecbCipher:(NSData *)dataIn
               key:(NSData *)symmetricKey
              type:(AESCipherType)aes256
@@ -111,9 +110,9 @@
        completion:(AESCipherCompletion)callback {
     
 }
-
-
-
+    
+    
+    
 + (void)doCipher:(NSData *)dataIn
              key:(NSData *)symmetricKey
        operation:(AESCipherOperation)encryptOrDecrypt
@@ -140,25 +139,35 @@
     CCOperation op = (CCOperation)kCCEncrypt;
     switch (encryptOrDecrypt) {
         case AESCipherOperationEncrypt:
-            op = (CCOperation)kCCEncrypt;
-            break;
+        op = (CCOperation)kCCEncrypt;
+        break;
         case AESCipherOperationDecrypt:
-            op = (CCOperation)kCCDecrypt;
-            break;
-            
+        op = (CCOperation)kCCDecrypt;
+        break;
+        
         default:
-            break;
+        break;
     }
     
 }
-
+    
 #pragma mark - Private Methods
-
-// 处理 key
-+ (NSData *) appendKeyDataWithKeySize:(AESCipherKeySize)keySize
-                                  key:(NSData *)symmetricKey
-                           keyPadding:(AESCipherKeyPadding)keyPadding
-                           completion:(AESCipherCompletion)callback {
+    
+    // 处理 key
+    
+    /**
+     处理加密密码
+     
+     @param keySize AES KeySize 16bytes 24 bytes 32bytes
+     @param symmetricKey 对称key Data
+     @param keyPadding key Data 拼接规则
+     @param callback 回调
+     @return 新的 key data
+     */
++ (NSData *)appendKeyDataWithKeySize:(AESCipherKeySize)keySize
+                                 key:(NSData *)symmetricKey
+                          keyPadding:(AESCipherKeyPadding)keyPadding
+                          completion:(AESCipherCompletion)callback {
     
     NSMutableData *keyData = [NSMutableData dataWithData:symmetricKey];
     
@@ -183,15 +192,35 @@
     callback(nil,AESCipherErrorNone);
     return keyData;
 }
-
-// 处理 data in
+    
+    // 处理 data in
 + (NSData *)dealWithDataIn:(NSData *)dataIn
                    padding:(AESCipherPadding)dataPadding
                  operation:(AESCipherOperation)operation {
     
+    int toAppendCount = 0;
     NSMutableData *data = [NSMutableData dataWithData:dataIn];
-    int toAppendCount = kCCBlockSizeAES128 - (dataIn.length % kCCBlockSizeAES128);
+    toAppendCount = kCCBlockSizeAES128 - (dataIn.length % kCCBlockSizeAES128);
+    // zero padding rule (eg. data + (padding 0000) + 04占位，（ % 余数2),  解密移除)
+    //    switch (operation) {
+    //        case AESCipherOperationEncrypt:
+    //        toAppendCount = kCCBlockSizeAES128 - (dataIn.length % kCCBlockSizeAES128);
+    //        break;
+    //
+    //        case AESCipherOperationDecrypt:
+    //        if (dataPadding == AESCipherPaddingZero) {
+    //
+    //        }
+    //        break;
+    //
+    //        default:
+    //        break;
+    //    }
+    //
+    
+    
     if (toAppendCount < kCCBlockSizeAES128) {
+        
         if (dataPadding == AESCipherPaddingZero) {
             NSMutableData *appendding = [NSMutableData dataWithLength:toAppendCount];
             [data appendData:appendding];
@@ -213,75 +242,75 @@
     }
     return data;
 }
-
-
+    
+    
 + (void)executeCipher:(NSData *)dataIn
                   key:(NSData *)symmetricKey
                  type:(AESCipherType)aes256or192or128
               context:(CCOperation)encryptOrDecrypt // kCCEncrypt or kCCDecrypt
            completion:(AESCipherCompletion)callback
-{
-    CCCryptorStatus ccStatus   = kCCSuccess;
-    size_t          cryptBytes = 0;    // Number of bytes moved to buffer.
-    NSMutableData  *dataOut    = [NSMutableData dataWithLength:dataIn.length + kCCBlockSizeAES128];
-    
-    ccStatus = CCCrypt( encryptOrDecrypt,
-                       kCCAlgorithmAES128,
-                       kCCOptionECBMode,
-                       symmetricKey.bytes,
-                       aes256or192or128,
-                       0,
-                       dataIn.bytes, dataIn.length,
-                       dataOut.mutableBytes, dataOut.length,
-                       &cryptBytes);
-    
-    if (ccStatus != kCCSuccess) {
-        NSLog(@"CCCrypt status: %d", ccStatus);
-        if (encryptOrDecrypt == ((CCOperation)kCCEncrypt)) {
-            callback(nil,AESCipherErrorEncrypt);
-            
-        }else {
-            callback(nil,AESCipherErrorDecrypt);
+    {
+        CCCryptorStatus ccStatus   = kCCSuccess;
+        size_t          cryptBytes = 0;    // Number of bytes moved to buffer.
+        NSMutableData  *dataOut    = [NSMutableData dataWithLength:dataIn.length + kCCBlockSizeAES128];
+        
+        ccStatus = CCCrypt( encryptOrDecrypt,
+                           kCCAlgorithmAES128,
+                           kCCOptionECBMode,
+                           symmetricKey.bytes,
+                           aes256or192or128,
+                           0,
+                           dataIn.bytes, dataIn.length,
+                           dataOut.mutableBytes, dataOut.length,
+                           &cryptBytes);
+        
+        if (ccStatus != kCCSuccess) {
+            NSLog(@"CCCrypt status: %d", ccStatus);
+            if (encryptOrDecrypt == ((CCOperation)kCCEncrypt)) {
+                callback(nil,AESCipherErrorEncrypt);
+                
+            }else {
+                callback(nil,AESCipherErrorDecrypt);
+            }
+            return;
         }
-        return;
+        
+        dataOut.length = cryptBytes;
+        callback(dataOut,AESCipherErrorNone);
+        //    return dataOut;
     }
     
-    dataOut.length = cryptBytes;
-    callback(dataOut,AESCipherErrorNone);
-    //    return dataOut;
-}
-
-
+    
 + (NSData *)doCipher:(NSData *)dataIn
                  key:(NSData *)symmetricKey
              context:(CCOperation)encryptOrDecrypt // kCCEncrypt or kCCDecrypt
-{
-    CCCryptorStatus ccStatus   = kCCSuccess;
-    size_t          cryptBytes = 0;    // Number of bytes moved to buffer.
-    NSMutableData  *dataOut    = [NSMutableData dataWithLength:dataIn.length + kCCBlockSizeAES128];
-    
-    ccStatus = CCCrypt( encryptOrDecrypt,
-                       kCCAlgorithmAES128,
-                       kCCOptionECBMode,
-                       symmetricKey.bytes,
-                       kCCKeySizeAES256,
-                       0,
-                       dataIn.bytes, dataIn.length,
-                       dataOut.mutableBytes, dataOut.length,
-                       &cryptBytes);
-    
-    if (ccStatus != kCCSuccess) {
-        NSLog(@"CCCrypt status: %d", ccStatus);
+    {
+        CCCryptorStatus ccStatus   = kCCSuccess;
+        size_t          cryptBytes = 0;    // Number of bytes moved to buffer.
+        NSMutableData  *dataOut    = [NSMutableData dataWithLength:dataIn.length + kCCBlockSizeAES128];
+        
+        ccStatus = CCCrypt( encryptOrDecrypt,
+                           kCCAlgorithmAES128,
+                           kCCOptionECBMode,
+                           symmetricKey.bytes,
+                           kCCKeySizeAES256,
+                           0,
+                           dataIn.bytes, dataIn.length,
+                           dataOut.mutableBytes, dataOut.length,
+                           &cryptBytes);
+        
+        if (ccStatus != kCCSuccess) {
+            NSLog(@"CCCrypt status: %d", ccStatus);
+        }
+        
+        dataOut.length = cryptBytes;
+        
+        //test
+        //    NSMutableData *mData = [NSMutableData dataWithLength:4];
+        //    NSLog(@"mData: = %@",mData);
+        
+        return dataOut;
     }
     
-    dataOut.length = cryptBytes;
     
-    //test
-    //    NSMutableData *mData = [NSMutableData dataWithLength:4];
-    //    NSLog(@"mData: = %@",mData);
-    
-    return dataOut;
-}
-
-
 @end

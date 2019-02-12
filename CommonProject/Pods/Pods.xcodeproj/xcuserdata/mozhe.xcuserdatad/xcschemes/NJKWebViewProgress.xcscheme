@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FA1290BD9C46E61BF154FE7DDA8D128C"
+               BlueprintIdentifier = "6FD62E1D639FD57B319FEC8FD2B678F4"
                BlueprintName = "NJKWebViewProgress"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "NJKWebViewProgress.framework">
